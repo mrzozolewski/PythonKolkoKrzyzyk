@@ -27,6 +27,14 @@ def pozycja(plansza):
         print("Pozycja zajeta")
 
 
+def wygrana(plansza):
+    global wygrany
+    #wygrana w 1 rzedzie poziom ---
+    if plansza[0] == plansza[1] == plansza[2]:
+        wygrany = plansza[1]
+        return True
+    
+    
 while gra_trwa == True:
     rysujplansze(plansza)
     pozycja(plansza)
