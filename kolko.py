@@ -40,39 +40,57 @@ def pozycja(plansza):
 def wygrana_poziom(plansza):
     global wygrany
     #wygrana w 1 rzedzie poziom ---
-    if plansza[0] == plansza[1] == plansza[2]:
+    if plansza[0] == plansza[1] == plansza[2]and plansza[0] != "-":
         wygrany = plansza[1] # nie ma to znaczenia jaki indeks z tablicy bedzie miala zmienna wygrany bo musza byc one rowne (chodzi oczywiscie o 0,1,2 i w innych przykladach inne liczby)
-        return True
-    elif plansza[3] == plansza[4] == plansza[5]:
+        print("Wygrał {wygrany}")
+    
+    elif plansza[3] == plansza[4] == plansza[5]and plansza[3] != "-":
         wygrany = plansza[4]
-        return True
-    elif plansza[6] == plansza[7] == plansza[8]:
+        print("Wygrał {wygrany}")
+    
+    elif plansza[6] == plansza[7] == plansza[8]and plansza[6] != "-":
         wygrany = plansza[7]
-        return True
+        print("Wygrał {wygrany}")
+    
     
 def wygrana_pion(plansza):
     global wygrany
   
-    if plansza[0] == plansza[3] == plansza[6]:
+    if plansza[0] == plansza[3] == plansza[6]and plansza[0] != "-":
         wygrany = plansza[0]
-        return True
-    elif plansza[1] == plansza[4] == plansza[7]:
+        print("Wygrał {wygrany}")
+    
+    elif plansza[1] == plansza[4] == plansza[7]and plansza[1] != "-":
         wygrany = plansza[4]
-        return True
-    elif plansza[2] == plansza[5] == plansza[8]:
-        wygrany = plansza[2] 
-        return True    
+        print("Wygrał {wygrany}")
+    
+    elif plansza[2] == plansza[5] == plansza[8]and plansza[2] != "-":
+        wygrany = plansza[2]
+        print("Wygrał {wygrany}")
+    
+           
     
 def wygrana_na_ukos(plansza):
     global wygrany
     
-    if plansza[0] == plansza[4] == plansza[8]:
+    if plansza[0] == plansza[4] == plansza[8] and plansza[0] != "-":
         wygrany = plansza[0]
-        return True
-    elif plansza[2] == plansza[4] == plansza[6]:
+        print("Wygrał {wygrany}")    
+    elif plansza[2] == plansza[4] == plansza[6] and plansza[2] != "-":
         wygrany = plansza[4]
-        return True     
+        print("Wygrał {wygrany}")
     
+def zmiana_gracza():
+    global aktualny_gracz 
+    if aktualny_gracz== "X":
+        aktualny_gracz = "O"
+    else:
+        aktualny_gracz = "X"
+
 while gra_trwa == True:
     rysujplansze(plansza)
     pozycja(plansza)
+    zmiana_gracza()
+    wygrana_na_ukos(plansza)
+    wygrana_pion(plansza)    
+    wygrana_poziom(plansza)
