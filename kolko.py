@@ -1,5 +1,5 @@
 import random
-#Puste pola w plansze, ktore beda podmieniane na znaki
+#Puste pola w planszy, ktore beda podmieniane na znaki
 plansza = ["-", "-", "-",
           "-", "-", "-",
           "-", "-", "-"]
