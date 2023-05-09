@@ -1,19 +1,31 @@
+import random
+#Puste pola w plansze, ktore beda podmieniane na znaki
 plansza = ["-", "-", "-",
           "-", "-", "-",
           "-", "-", "-"]
+
 aktualny_gracz = "X"
 Wygrany = None
-
 gra_trwa = True
 
 #Rysowanie planszy
 
+#┌───┬───┬───┐
+#│ - │ - │ - │
+#├───┼───┼───┤	
+#│ - │ - │ - │ 
+#├───┼───┼───┤	
+#│ - │ - │ - │ 
+#└───┴───┴───┘ 
+
 def rysujplansze(plansza):
-    print(plansza[0] + " | " + plansza[1] + " | " + plansza[2])
-    print("----------")
-    print(plansza[3] + " | " + plansza[4] + " | " + plansza[5])
-    print("----------")
-    print(plansza[6] + " | " + plansza[7] + " | " + plansza[8])
+    print("┌───┬───┬───┐")
+    print("│ " + plansza[0] + " │ " + plansza[1] + " │ " + plansza[2] + " │")
+    print("├───┼───┼───┤")
+    print("│ " + plansza[3] + " │ " + plansza[4] + " │ " + plansza[5] + " │")
+    print("├───┼───┼───┤")
+    print("│ " + plansza[6] + " │ " + plansza[7] + " │ " + plansza[8] + " │")
+    print("└───┴───┴───┘")
 
 rysujplansze(plansza)
 
@@ -112,10 +124,23 @@ def zmiana_gracza():
     else:
         aktualny_gracz = "X"
 
+    
+def bot(plansza):
+    while aktualny_gracz == "O":
+        pozycja = random.randint(0, 8)
+        if plansza[pozycja] == "-":
+            plansza[pozycja] = "O"
+            zmiana_gracza()
+
 while gra_trwa == True:
     rysujplansze(plansza)
     pozycja(plansza)
+    wygrana_na_ukos(plansza)
+    wygrana_pion(plansza)    
+    wygrana_poziom(plansza)
+    remis(plansza)
     zmiana_gracza()
+    bot(plansza)
     wygrana_na_ukos(plansza)
     wygrana_pion(plansza)    
     wygrana_poziom(plansza)
